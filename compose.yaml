@@ -1,0 +1,7 @@
+services:
+    web:
+      build: .
+      image: namrata-site
+      container_name: namrata-site
+      ports:
+        - "8081:80"
