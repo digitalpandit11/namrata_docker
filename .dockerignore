@@ -4,3 +4,7 @@ test.txt
 Dockerfile
 .dockerignore
 compose.yaml
+.env
+.env.example
+.gitignore
+db

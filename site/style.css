@@ -16,3 +16,39 @@ body {
   }
   h1 { color: #1d63ed; margin-top: 0; }
   .note { color: #666; font-size: 14px; }
+
+   .contact {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e3e8ef;
+  }
+  .contact h2 { color: #1d63ed; margin-top: 0; font-size: 20px; }
+  .contact form { display: flex; flex-direction: column; gap: 6px; }
+  .contact label { font-weight: bold; font-size: 14px; margin-top: 8px; }
+  .contact input {
+    padding: 10px 12px;
+    border: 1px solid #c9d3df;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+  .contact input:focus {
+    outline: none;
+    border-color: #1d63ed;
+    box-shadow: 0 0 0 3px rgba(29, 99, 237, 0.15);
+  }
+  .contact button {
+    margin-top: 16px;
+    padding: 12px;
+    background: #1d63ed;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .contact button:hover { background: #1650c4; }
+  .alert { padding: 10px 14px; border-radius: 6px; font-size: 14px; }
+  .alert-success { background: #e6f6ec; color: #1b7a3d; }
+  .alert-error { background: #fdecec; color: #b42318; }
+  .contact input.input-error { border-color: #b42318; }
+  .field-error { color: #b42318; font-size: 13px; }
