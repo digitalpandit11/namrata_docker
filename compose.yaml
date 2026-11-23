@@ -36,5 +36,27 @@ services:
         - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
       ports:
         - "127.0.0.1:3308:3306"
+
+    laravel-web:
+      image: nginx:1.27-alpine
+      container_name: namrata-laravel-web
+      ports:
+         - "8082:80"
+      volumes:
+        - ./laravel:/var/www/html
+        - ./nginx/laravel.conf:/etc/nginx/conf.d/default.conf:ro
+      depends_on:
+        - laravel-php
+
+    laravel-php:
+      build:
+        context: .
+        dockerfile: php/laravel.Dockerfile
+      image: namrata-laravel-php
+      container_name: namrata-laravel-php
+      volumes:
+        - ./laravel:/var/www/html
+      depends_on:
+        - db
 volumes:
   db-data:
