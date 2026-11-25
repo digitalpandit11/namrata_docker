@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\EnquireController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\PostController;
@@ -642,3 +644,16 @@ Route::get('/unmanaged-ethernet-switches-supplier/{typeSlug}/{productSlug}', fun
 // ── News / Blog ──────────────────────────────────────────────────────────────
 Route::get('/blog',        [PostController::class, 'index']);
 Route::get('/blog/{slug}', [PostController::class, 'show']);
+
+// ── Admin ────────────────────────────────────────────────────────────────────
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('login',  [AdminAuthController::class, 'showLogin'])->name('login');
+        Route::post('login', [AdminAuthController::class, 'login'])->name('login.submit');
+    });
+
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/',       [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
+    });
+});
