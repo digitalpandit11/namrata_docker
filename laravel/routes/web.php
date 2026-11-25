@@ -3,7 +3,6 @@
 use App\Http\Controllers\EnquireController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\WordPressImportController;
 use App\Mail\ContactFormMail;
 use App\Mail\EnquireFormMail;
 use Illuminate\Support\Facades\Mail;
@@ -638,9 +637,7 @@ Route::get('/unmanaged-ethernet-switches-supplier/{typeSlug}/{productSlug}', fun
     return view('pages.products.product-detail', compact('subcategory', 'typeSlug', 'type', 'productSlug', 'product'));
 });
 
-// ── WordPress Import (run once, then remove or protect) ──────────────────────
-Route::get('/wp-import',   [WordPressImportController::class, 'import']);   // first-time import (skips existing)
-Route::get('/wp-reimport', [WordPressImportController::class, 'reimport']); // update all existing posts
+// WordPress import moved to the command line: php artisan wp:import [--update]
 
 // ── News / Blog ──────────────────────────────────────────────────────────────
 Route::get('/blog',        [PostController::class, 'index']);
